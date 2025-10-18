@@ -1,0 +1,55 @@
+# Phase 1 Setup Guide
+
+## 1. Database Setup
+
+Run the following commands in your MySQL client:
+
+```sql
+CREATE DATABASE quiz_application;
+CREATE USER 'quiz_user'@'localhost' IDENTIFIED BY 'quiz_password123';
+GRANT ALL PRIVILEGES ON quiz_application.* TO 'quiz_user'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+Alternatively, you can run the `database-setup.sql` script.
+
+## 2. Build the Project
+
+Navigate to the `backend` directory and run:
+
+```bash
+./mvnw clean install
+```
+
+## 3. Run the Application
+
+```bash
+./mvnw spring-boot:run
+```
+
+## 4. Expected Output
+
+You should see output similar to this, indicating the application has started successfully on port 8080.
+
+```
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_
+itro | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+...
+...
+...
+...: Starting QuizApplication
+...: Tomcat initialized with port 8080
+...: Started QuizApplication in X.XXX seconds
+```
+
+## 5. Troubleshooting
+
+- **Port 8080 in use:** Change `server.port` in `application.properties`.
+- **Database connection issues:** Ensure MySQL is running and credentials in `application.properties` are correct.
